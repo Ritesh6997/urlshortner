@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>URL Shortner</title>
+  </head>
+  <body>
+    <h1>URL Shortner</h1>
+
+    <% if (locals.error) { %>
+    <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/" method="post">
+      <input type="url" name="url" id="url" class="url" placeholder="Enter URL here" />
+      <input type="text" name="slug" id="slug" class="url" placeholder="Enter custom name here" />
+      
+      <!-- <input type="number" name="number" id="number"  class="url"  max="20" min="1" placeholder="Enter expire time(1 - 20 min). Default is 1 minute"  > -->
+      <input type="submit" value="create url" id="submitBtn"/>
+    </form>
+    <div class="short-url">
+      <% if (locals.short_url) { %>
+      <a href="<%= short_url %>" target="_blank" >https://url-shorter-maker.herokuapp.com/<%= short_url %> </a>
+      <p>Link will be auto deleted in 5 mins.</p>
+      <% } %>
+    </div>
+  </body>
+</html>
